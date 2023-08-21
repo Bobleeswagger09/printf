@@ -9,7 +9,7 @@
 * format specifiers.
 * @...: Variable arguments that correspond to the format
 * specifiers in the format string.
-*
+* Return: char count
 */
 
 int _printf(const char *format, ...)
@@ -44,7 +44,7 @@ int _printf(const char *format, ...)
 					handle_binary(va_arg(args, unsigned int), buffer, &buff_ind, &count);
 					break;
 				case 'u':
-					handle_unsigned(va_arg(args, unsigned int), buffer, &buff_ind, &count);
+					handle_un_int(va_arg(args, unsigned int), buffer, &buff_ind, &count);
 					break;
 				case 'o':
 					handle_octal(va_arg(args, unsigned int), buffer, &buff_ind, &count);
@@ -59,7 +59,7 @@ int _printf(const char *format, ...)
 				default:
 					if (buff_ind == BUFFER_SIZE - 1)
 					{
-						count = _write_buffer(buffer, &buff_ind, &count)
+						count = _write_buffer(buffer, &buff_ind, &count);
 					}
 					buffer[buff_ind++] = '%';
 					buffer[buff_ind++] = *format;
