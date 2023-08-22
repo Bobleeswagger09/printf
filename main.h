@@ -14,6 +14,8 @@ void handle_hexadecimal(unsigned int num, char *buffer, int *buff_ind, int *coun
 void handle_percent(char *buffer, int *buff_ind, int *count);
 void handle_cust_str(const char *str, char *buffer, int *buff_ind, int *count);
 void handle_pointer(void *ptr, char *buffer, int *buff_ind, int *count);
+void handle_rev_str(const char *str, char *buffer, int *buff_ind, int *count);
+void handle_rot13_str(const char *str, char *buffer, int *buff_ind, int *count);
 
 #endif
 

@@ -71,6 +71,12 @@ int _printf(const char *format, ...)
 				case 'p':
 					handle_pointer(va_arg(args, void*), buffer, &buff_ind, &count);
 					break;
+				case 'r':
+					handle_rev_str(va_arg(args, char*), buffer, &buff_ind, &count);
+					break;
+				case 'R':
+					handle_rot13_str(va_arg(args, char*), buffer, &buff_ind, &count);
+					break;
 				default:
 					if (buff_ind == BUFFER_SIZE - 1)
 					{
