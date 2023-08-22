@@ -56,6 +56,12 @@ int _printf(const char *format, ...)
 				case '%':
 					handle_percent(buffer, &buff_ind, &count);
 					break;
+				case 'S':
+					handle_cust_str(va_arg(args, char*), buffer, &buff_ind, &count);
+					break;
+				case 'p':
+					handle_pointer(va_arg(args, void*), buffer, &buff_ind, &count);
+					break;
 				default:
 					if (buff_ind == BUFFER_SIZE - 1)
 					{

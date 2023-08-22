@@ -11,7 +11,9 @@ int main(void)
 {
     int len;
     unsigned int ui;
+    void *addr;
 
+    addr = (void *)0x7ffe637541f0;
     len = _printf("Let's try to printf a simple sentence.\n");
     ui = (unsigned int)INT_MAX + 1024;
     _printf("Character:[%c]\n", 'H');
@@ -22,6 +24,7 @@ int main(void)
     _printf("Unsigned:[%u]\n", ui);
     _printf("Unsigned octal:[%o]\n", ui);
     _printf("Unsigned hexadecimal:[%x, %X]\n", ui, ui);
+    _printf("Address:[%p]\n", addr);
     len = _printf("Percent:[%%]\n");
     _printf("Len:[%d]\n", len);
 
