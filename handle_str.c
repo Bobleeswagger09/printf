@@ -1,7 +1,7 @@
 #include <unistd.h>
 #include "main.h"
 /**
- * handle_string - funtion to handle string
+ * handle_string - funtion to handle a string
  *@str: constant string
  *@buffer: buffer array
  *@buff_ind: buffer index
