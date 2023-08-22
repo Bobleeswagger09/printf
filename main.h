@@ -10,7 +10,7 @@ void handle_integer(int num, char *buffer, int *buff_ind, int *count);
 void handle_binary(unsigned int num, char *buffer, int *buff_ind, int *count);
 void handle_un_int(unsigned int num, char *buffer, int *buff_ind, int *count);
 void handle_octal(unsigned int num, char *buffer, int *buff_ind, int *count);
-void handle_hexadecimal(unsigned int num, char *buffer, int *buff_ind, int *count);
+void handle_hexadecimal(unsigned int num, char *buffer, int *buff_ind, int *count, int uppercase);
 void handle_percent(char *buffer, int *buff_ind, int *count);
 void handle_cust_str(const char *str, char *buffer, int *buff_ind, int *count);
 void handle_pointer(void *ptr, char *buffer, int *buff_ind, int *count);

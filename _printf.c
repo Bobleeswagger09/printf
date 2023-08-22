@@ -51,8 +51,10 @@ int _printf(const char *format, ...)
 					handle_octal(va_arg(args, unsigned int), buffer, &buff_ind, &count);
 					break;
 				case 'x':
+					handle_hexadecimal(va_arg(args, unsigned int), buffer, &buff_ind, &count, 0);
+					break;
 				case 'X':
-					handle_hexadecimal(va_arg(args, unsigned int), buffer, &buff_ind, &count);
+					handle_hexadecimal(va_arg(args, unsigned int), buffer, &buff_ind, &count, 1);
 					break;
 				case '%':
 					handle_percent(buffer, &buff_ind, &count);
