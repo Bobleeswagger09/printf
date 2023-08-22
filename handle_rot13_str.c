@@ -34,7 +34,18 @@ void handle_rot13_str(const char *str, char *buffer, int *buff_ind, int *count)
 				}
 			}
 		}
-		if (x == '\0')
+		if (x == '\\')
+		{
+			if (*buff_ind >= BUFFER_SIZE - 4)
+			{
+				*count = _write_buffer(buffer, buff_ind, count);
+			}
+			buffer[(*buff_ind)++] = '\\';
+			buffer[(*buff_ind)++] = '\\';
+			buffer[(*buff_ind)++] = '\\';
+			buffer[(*buff_ind)++] = '\\';
+		}
+		else if (x == '\0')
 		{
 			if (*buff_ind == BUFFER_SIZE - 1)
 			{
@@ -45,15 +56,12 @@ void handle_rot13_str(const char *str, char *buffer, int *buff_ind, int *count)
 			buffer[*buff_ind] = '0';
 			(*buff_ind)++;
 		}
-		else
+		else if (*buff_ind == BUFFER_SIZE - 1)
 		{
-			if (*buff_ind == BUFFER_SIZE - 1)
-			{
-				*count = _write_buffer(buffer, buff_ind, count);
-			}
-			buffer[*buff_ind] = x;
-			(*buff_ind)++;
+			*count = _write_buffer(buffer, buff_ind, count);
 		}
+		buffer[*buff_ind] = x;
+		(*buff_ind)++;
 		str++;
 	}
 }
