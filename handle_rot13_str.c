@@ -34,14 +34,27 @@ void handle_rot13_str(const char *str, char *buffer,
 				c = 'a' + (c - 'a' + 13) % 26;
 			}
 		}
-
-		if (*buff_ind == BUFFER_SIZE - 1)
+		if (c == '\0')
 		{
-			*count = _write_buffer(buffer, buff_ind, count);
+			if (*buff_ind == BUFFER_SIZE - 1)
+			{
+				*count = _write_buffer(buffer, buff_ind, count);
+			}
+			buffer[*buff_ind] = '\\';
+			(*buff_ind)++;
+			buffer[*buff_ind] = '0';
+			(*buff_ind)++;
+		}
+		else
+		{
+			if (*buff_ind == BUFFER_SIZE - 1)
+			{
+				*count = _write_buffer(buffer, buff_ind, count);
+			}
+			buffer[*buff_ind] = c;
+			(*buff_ind)++;
 		}
 
-		buffer[*buff_ind] = c;
-		(*buff_ind)++;
 		str++;
 	}
 }
