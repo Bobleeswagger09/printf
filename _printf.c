@@ -31,7 +31,8 @@ int _printf(const char *format, ...)
 			switch (*format)
 			{
 				case 'c':
-					handle_char(va_arg(args, int), buffer, &buff_ind, &count);
+					handle_char(va_arg(args, int),
+							buffer, &buff_ind, &count);
 					break;
 				case 's':
 					handle_string(va_arg(args, char*), buffer, &buff_ind, &count);
