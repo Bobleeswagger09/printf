@@ -1,6 +1,5 @@
 #include <unistd.h>
 #include "main.h"
-
 /**
  * handle_rot13_str - prints a rot13 string
  *@str: string constant
@@ -9,47 +8,51 @@
  *@count: integer pointer
  * Return: void
  */
-
 void handle_rot13_str(const char *str, char *buffer, int *buff_ind, int *count)
 {
-	char x;
-	unsigned int j;
 	char in[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char out[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+	char c = *str;
+	char x = c;
+	int j;
 
 	if (str == NULL)
 	{
-		handle_string("(AHYY)", buffer, buff_ind, count);
+		handle_string("(nil)", buffer, buff_ind, count);
 		return;
 	}
-
 	while (*str)
 	{
-		for (j = 0; in[j]; j++)
+		if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
 		{
-			if (in[j] == *str)
+			for (j = 0; in[j]; j++)
 			{
-				x = out[j];
-				if (*buff_ind == BUFFER_SIZE - 1)
+				if (in[j] == c)
 				{
-					*count = _write_buffer(buffer, buff_ind, count);
+					x = out[j];
+					break;
 				}
-				buffer[*buff_ind] = x;
-				(*buff_ind)++;
-				(*count)++;
-				break;
 			}
 		}
-		if (!in[j])
+		if (x == '\0')
 		{
-			x = *str;
+			if (*buff_ind == BUFFER_SIZE - 1)
+			{
+				*count = _write_buffer(buffer, buff_ind, count);
+			}
+			buffer[*buff_ind] = '\\';
+			(*buff_ind)++;
+			buffer[*buff_ind] = '0';
+			(*buff_ind)++;
+		}
+		else
+		{
 			if (*buff_ind == BUFFER_SIZE - 1)
 			{
 				*count = _write_buffer(buffer, buff_ind, count);
 			}
 			buffer[*buff_ind] = x;
 			(*buff_ind)++;
-			(*count)++;
 		}
 		str++;
 	}
