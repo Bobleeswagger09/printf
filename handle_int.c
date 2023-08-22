@@ -1,5 +1,6 @@
 #include <unistd.h>
 #include  "main.h"
+#include <limits.h>
 
 /**
  * handle_integer - handles integers
@@ -16,6 +17,23 @@ void handle_integer(int num, char *buffer, int *buff_ind, int *count)
 	char temp_buffer[20];
 	int temp_ind = 0;
 	int is_negative = 0;
+
+	if (num == 0)
+	{
+		if (*buff_ind == BUFFER_SIZE - 1)
+		{
+			*count = _write_buffer(buffer, buff_ind, count);
+		}
+		buffer[*buff_ind] = '0';
+		(*buff_ind)++;
+		return;
+	}
+
+	if (num == INT_MIN)
+	{
+		handle_string("-2147483648", buffer, buff_ind, count);
+		return;
+	}
 
 	if (num < 0)
 	{
