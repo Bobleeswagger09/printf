@@ -16,6 +16,12 @@ void handle_pointer(void *ptr, char *buffer, int *buff_ind, int *count)
 	int temp_ind = 0;
 	char hex_chars[] = "0123456789abcdef";
 
+	if (ptr == NULL)
+	{
+		handle_string("(nil)", buffer, buff_ind, count);
+		return;
+	}
+
 	do {
 		temp_buffer[temp_ind++] = hex_chars[address % 16];
 		address /= 16;
