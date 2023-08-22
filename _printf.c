@@ -22,7 +22,7 @@ int _printf(const char *format, ...)
 	va_list args;
 
 	if (format == NULL)
-		return(-1);
+		return (-1);
 
 	va_start(args, format);
 
@@ -38,35 +38,44 @@ int _printf(const char *format, ...)
 							buffer, &buff_ind, &count);
 					break;
 				case 's':
-					handle_string(va_arg(args, char*), buffer, &buff_ind, &count);
+					handle_string(va_arg(args, char*),
+							buffer, &buff_ind, &count);
 					break;
 				case 'd':
 				case 'i':
-					handle_integer(va_arg(args, int), buffer, &buff_ind, &count);
+					handle_integer(va_arg(args, int),
+							buffer, &buff_ind, &count);
 					break;
 				case 'b':
-					handle_binary(va_arg(args, unsigned int), buffer, &buff_ind, &count);
+					handle_binary(va_arg(args, unsigned int),
+							buffer, &buff_ind, &count);
 					break;
 				case 'u':
-					handle_un_int(va_arg(args, unsigned int), buffer, &buff_ind, &count);
+					handle_un_int(va_arg(args, unsigned int),
+							buffer, &buff_ind, &count);
 					break;
 				case 'o':
-					handle_octal(va_arg(args, unsigned int), buffer, &buff_ind, &count);
+					handle_octal(va_arg(args, unsigned int),
+							buffer, &buff_ind, &count);
 					break;
 				case 'x':
-					handle_hexadecimal(va_arg(args, unsigned int), buffer, &buff_ind, &count, 0);
+					handle_hexadecimal(va_arg(args, unsigned int),
+							buffer, &buff_ind, &count, 0);
 					break;
 				case 'X':
-					handle_hexadecimal(va_arg(args, unsigned int), buffer, &buff_ind, &count, 1);
+					handle_hexadecimal(va_arg(args, unsigned int),
+							buffer, &buff_ind, &count, 1);
 					break;
 				case '%':
 					handle_percent(buffer, &buff_ind, &count);
 					break;
 				case 'S':
-					handle_cust_str(va_arg(args, char*), buffer, &buff_ind, &count);
+					handle_cust_str(va_arg(args, char*),
+							buffer, &buff_ind, &count);
 					break;
 				case 'p':
-					handle_pointer(va_arg(args, void*), buffer, &buff_ind, &count);
+					handle_pointer(va_arg(args, void*),
+							buffer, &buff_ind, &count);
 					break;
 				default:
 					if (buff_ind == BUFFER_SIZE - 1)
