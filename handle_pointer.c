@@ -1,7 +1,7 @@
 #include <unistd.h>
 #include "main.h"
 /**
- * handle_pointer - handles pointer
+ * handle_pointer - funtions that handles pointer
  *@ptr: void pointer
  *@buffer: buffer array
  *@buff_ind: buffer index
@@ -34,4 +34,3 @@ void handle_pointer(void *ptr, char *buffer, int *buff_ind, int *count)
 		(*buff_ind)++;
 	}
 }
-

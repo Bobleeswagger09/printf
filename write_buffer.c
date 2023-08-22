@@ -2,11 +2,11 @@
 #include <unistd.h>
 
 /**
- * _write_buffer - writes buffer to stdout
- *@buffer: buffer array
- *@buff_ind: buffer index
- *@count: integer pointer
- *Return: void
+ * _write_buffer - writes buffer to standard output.
+ *@buffer: buffer room.
+ *@buff_ind: buffer element.
+ *@count: pointer to integer.
+ *Return: void.
  */
 
 int _write_buffer(char *buffer, int *buff_ind, int *count)

@@ -9,7 +9,7 @@
 * format specifiers.
 * @...: Variable arguments that correspond to the format
 * specifiers in the format string.
-* Return: char count
+* Return: character to be counted.
 */
 
 int _printf(const char *format, ...)

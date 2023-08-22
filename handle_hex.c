@@ -3,11 +3,11 @@
 
 /**
 * handle_hexadecimal - Converts an unsigned integer
-* to its hexadecimal representation and adds it to the buffer.
-* @num: The unsigned integer to be converted to hexadecimal.
-* @buffer: The output buffer where the hexadecimal representation is stored.
-* @buff_ind: A pointer to the current index in the buffer.
-* @count: A pointer to the total count of characters printed.
+* to its hexadecimal representation and adds it to the buffer
+* @num: The unsigned integer to be converted to hexadecimal
+* @buffer: The output buffer where the hexadecimal representation is stored
+* @buff_ind: A pointer to the current index in the buffer
+* @count: A pointer to the total count of characters printed
 */
 
 void handle_hexadecimal(unsigned int num,
