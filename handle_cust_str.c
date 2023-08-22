@@ -11,6 +11,12 @@
 
 void handle_cust_str(const char *str, char *buffer, int *buff_ind, int *count)
 {
+	if (str == NULL)
+	{
+		handle_string("(null)", buffer, buff_ind, count);
+		return;
+	}
+
 	while (*str)
 	{
 		if (*buff_ind == BUFFER_SIZE - 1)
