@@ -13,7 +13,7 @@ void handle_cust_str(const char *str, char *buffer, int *buff_ind, int *count)
 {
 	if (str == NULL)
 	{
-		handle_string("(null)", buffer, buff_ind, count);
+		handle_string("(nil)", buffer, buff_ind, count);
 		return;
 	}
 
@@ -35,7 +35,8 @@ void handle_cust_str(const char *str, char *buffer, int *buff_ind, int *count)
 				*count = _write_buffer(buffer, buff_ind, count);
 			}
 			buffer[(*buff_ind)++] = '\\';
-
+			buffer[(*buff_ind)++] = 'x';
+			buffer[(*buff_ind)++] = "0123456789ABCDEF"[(*str >> 4) & 0x0F];
 			buffer[(*buff_ind)++] = "0123456789ABCDEF"[*str & 0x0F];
 		}
 		str++;
