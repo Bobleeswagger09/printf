@@ -17,7 +17,7 @@ void handle_rot13_str(const char *str, char *buffer,
 
 	if (str == NULL)
 	{
-		handle_string("(nil)", buffer, buff_ind, count);
+		handle_string("(AHYY)", buffer, buff_ind, count);
 		return;
 	}
 
