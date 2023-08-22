@@ -10,10 +10,12 @@
  * Return: void
  */
 
-void handle_rot13_str(const char *str, char *buffer,
-		int *buff_ind, int *count)
+void handle_rot13_str(const char *str, char *buffer, int *buff_ind, int *count)
 {
-	char c = *str;
+	char x;
+	unsigned int j;
+	char in[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char out[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 
 	if (str == NULL)
 	{
@@ -23,39 +25,32 @@ void handle_rot13_str(const char *str, char *buffer,
 
 	while (*str)
 	{
-		if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z'))
+		for (j = 0; in[j]; j++)
 		{
-			if (c >= 'A' && c <= 'Z')
+			if (in[j] == *str)
 			{
-				c = 'A' + (c - 'A' + 13) % 26;
-			}
-			else
-			{
-				c = 'a' + (c - 'a' + 13) % 26;
+				x = out[j];
+				if (*buff_ind == BUFFER_SIZE - 1)
+				{
+					*count = _write_buffer(buffer, buff_ind, count);
+				}
+				buffer[*buff_ind] = x;
+				(*buff_ind)++;
+				(*count)++;
+				break;
 			}
 		}
-		if (c == '\0')
+		if (!in[j])
 		{
+			x = *str;
 			if (*buff_ind == BUFFER_SIZE - 1)
 			{
 				*count = _write_buffer(buffer, buff_ind, count);
 			}
-			buffer[*buff_ind] = '\\';
+			buffer[*buff_ind] = x;
 			(*buff_ind)++;
-			buffer[*buff_ind] = '0';
-			(*buff_ind)++;
+			(*count)++;
 		}
-		else
-		{
-			if (*buff_ind == BUFFER_SIZE - 1)
-			{
-				*count = _write_buffer(buffer, buff_ind, count);
-			}
-			buffer[*buff_ind] = c;
-			(*buff_ind)++;
-		}
-
 		str++;
 	}
 }
-
